@@ -44,7 +44,11 @@ public class EmailController {
         final String senderEmail = "ar9204@srmist.edu.in";
         final String appPassword = "ywew zbbq plnn jcjj"; // Replace this
 
-       
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, appPassword);
+            }
+        });
 
         // Enable debugging (optional, helps find issues)
         session.setDebug(true);
